@@ -1,0 +1,96 @@
+@font-face {
+    font-family: 'IRANSans_Medium';
+    src: url('/digikala_mvc/public/fonts/IRANSansWeb_Medium.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'IRANSans_Light';
+    src: url('/digikala_mvc/public/fonts/IRANSansWeb_Light.ttf') format('truetype');
+}
+
+
+
+* {
+    font-family: IRANSans_Light;
+    font-size: 9pt;
+}
+
+.font-sm {
+    font-size: 8pt
+}
+
+.font-xs {
+    font-size: 7pt;
+}
+
+.font-lg {
+    font-size: 11pt
+}
+
+.font-2lg {
+    font-size: 13pt
+}
+
+#menu_top>ul>li>ul {
+    display: none;
+}
+
+.submenu3 {
+    display: none;
+}
+
+.active_main_menu {
+    display: flex !important;
+}
+
+
+.active2_main_menu {
+    display: grid !important;
+}
+
+a {
+    cursor: pointer;
+
+}
+
+a:hover {
+    color: dodgerblue !important;
+}
+
+.active_menu_color {
+    color: red;
+
+}
+
+#sliderNavigator ul li.active_slider {
+    background-color: #FF4532;
+    color: white;
+    font-weight: bold;
+    position: relative
+}
+
+#sliderNavigator ul li.active_slider::after {
+    right: -20px;
+    top: 0px;
+    content: "";
+    display: inline-block;
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    border-style: solid;
+    border-width: 16px 0 18px 21px;
+    border-color: transparent transparent transparent #FF4532;
+    transform: rotate(0deg);
+
+}
+
+.main_slider2>div {}
+
+/* #product_gallery .item {
+    display: none;
+}
+#product_gallery .item.active{display: block !important;} */
+.owl-carousel .owl-item img {
+    display: block;
+    width: revert-layer;
+}
