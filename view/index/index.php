@@ -1,10 +1,11 @@
 <style>
-    *{font-weight: bold}
+    * {
+        font-weight: bold
+    }
 </style>
 
-
-
 <!--main-->
+
 <div id="main" class="max-w-screen-xl m-auto">
     <div id="banner_top" class="mt-3 shadow-lg">
         <img src="public/images/banner.jpg" class="w-full" alt="">
@@ -14,12 +15,17 @@
         <!--sidebar left-->
         <div id="sidebar_left" class="col-span-3">
             <!-- اصلی slider-->
-            <?php require("slider1.php") ?>
+         
 
-            <?php require("services_features.php") ?>
+            <?php
+            
+            include("slider1.php");
+            include("services_features.php");
+            include("slider2.php");
+            ?>
+         
 
-            <!--slider 2-->
-            <?php require("slider2.php") ?>
+           
 
             <!--فقط در دیجی کالا-->
             <?php require('only_clicksite.php') ?>
@@ -35,7 +41,7 @@
 
             <!--   جدید ترین کالاها-->
             <?php require('last_product.php') ?>
-            
+
 
 
         </div>

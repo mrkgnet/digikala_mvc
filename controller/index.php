@@ -8,13 +8,12 @@ class Index extends Controller
 
     public function index()
     {
-      
-        echo $this->model->test();
-        // $this->view('index/index');
+       $slider1= $this->model->getSlider1();
+       $slider2= $this->model->getSlider2();
+       $data=[$slider1 ,$slider2];
+        $this->view('index/index',$data);
+  
     }
 
-    public function sayHello($name = '', $family = '')
-    {
-        echo $name . ' ' . $family;
-    }
+   
 }

@@ -72,15 +72,21 @@
     </div>
 
     <div class="swiper-wrapper">
-        <div class="swiper-slide">
-            <a href="#"><img src="public/images/slider1.jpg" alt="Slide 1"></a>
-        </div>
-        <div class="swiper-slide">
-            <a href="#"><img src="public/images/slider2.jpg" alt="Slide 2"></a>
-        </div>
-        <div class="swiper-slide">
-            <a href="#"><img src="public/images/slider3.jpg" alt="Slide 3"></a>
-        </div>
+
+        <?php
+        $data_slider1= $data[0];
+        
+       
+        foreach ($data_slider1 as $row) {
+        ?>
+            <div class="swiper-slide">
+                <a href="<?=$row['link']?>" target="_blank">
+                    <img src="<?=$row['img']?>" alt="Slide 1">
+                </a>
+            </div>
+        <?php
+        }
+        ?>
     </div>
 
     <!-- دکمه‌های ناوبری -->
