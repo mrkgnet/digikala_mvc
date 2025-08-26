@@ -12,6 +12,7 @@ class Controller
         require('header.php');
         require('view/' . $viewUrl . '.php');
         require('footer.php');
+        
     }
 
 

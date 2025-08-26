@@ -1,3 +1,9 @@
+    <?php
+        $option = Model::getOption();
+       
+    ?>
+    
+    
     <footer class=" bg-gray-600 text-white w-full">
         <div class="footer_top flex justify-between  max-w-screen-xl m-auto py-3.5 ">
             <div class="">
@@ -6,7 +12,10 @@
             <div>
                 <ul class="flex gap-3">
                     <li class="flex gap-2 ">
-                        <span>0213213123</span>
+                        <span>
+                            <?= $option['tel'] ?>
+                          
+                        </span>
                         <svg class="w-6 h-6 text-white dark:text-white" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -26,7 +35,9 @@
                     </li>
 
                     <li class="flex  gap-2 ">
-                        <span>digikala@info.ir</span>
+                        <span>
+                            <?= $option['email'] ?>
+                        </span>
                         <svg class="w-6 h-6 text-white dark:text-white" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -89,9 +100,9 @@
                     <p class="py-3 font-bold ">اولین نفری باشید که مطلع میشوید</p>
                     <div class="flex  gap-1.5 justify-end my-2 py-4 ">
                         <input type="text" placeholder="ایمیل خود را وارد کنید..."
-                            class="w-full max-w-sm px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none transition placeholder-gray-400 shadow-sm" />
+                            class="w-full max-w-sm px-4 py-2 border border-gray-300  focus:ring-2 focus:ring-blue-500 focus:outline-none transition placeholder-gray-400 shadow-sm" />
                         <button
-                            class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-xl shadow-md transition duration-300 cursor-pointer">
+                            class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6  shadow-md transition duration-300 cursor-pointer">
                             ارسال
                         </button>
 

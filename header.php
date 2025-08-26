@@ -1,3 +1,7 @@
+<?php
+
+use Soap\Url;
+?>
 <!doctype html>
 <html lang="fa" dir="rtl">
 
@@ -48,7 +52,7 @@
                                 clip-rule="evenodd" />
                         </svg>
 
-                        <a href="#">
+                        <a href="<?= URL ?>login">
                             فروشگاه اینترنت دیجی کالا وارد شوید
                         </a>
                     </div>
@@ -63,7 +67,7 @@
                         </svg>
 
 
-                        <a href="register.html">
+                        <a href="<?= URL ?>register">
                             ثبت نام کنید
                         </a>
                     </div>
@@ -72,7 +76,7 @@
                 <div id="header_right_bottom" class="flex my-3">
 
                     <button type="button"
-                        class="inline-flex items-center px-3 py-1 text-sm  text-center text-white bg-green-700 rounded-lg hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 ">
+                        class="inline-flex items-center cursor-pointer px-3 py-1 text-sm  text-center text-white bg-green-700  hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 ">
                         سبد خرید
                         <span
                             class="inline-flex items-center justify-center w-5 h-5 ms-2  font-semibold text-blue-800 bg-blue-200 rounded-full font-sm leading-8">
@@ -84,16 +88,16 @@
 
                         <div class="relative w-full">
                             <input type="search" id="search-dropdown"
-                                class="block p-1.5  w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg  border border-gray-300 ps-5"
+                                class="block p-1.5  w-full z-20 text-sm text-gray-900 bg-gray-50   border border-gray-300 ps-5"
                                 placeholder="جست و جو کنید ... " required />
                             <button type="submit"
-                                class="absolute top-0 end-0 p-2 text-sm font-medium h-full text-white bg-blue-700 rounded-e-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                class="absolute cursor-pointer top-0 end-0 p-2 text-sm font-medium h-full text-white bg-blue-700  border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                 <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                                     viewBox="0 0 20 20">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                         stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                                 </svg>
-                                <span class="sr-only">Search</span>
+                                <span class="sr-only cursor-pointer">Search</span>
                             </button>
                         </div>
 
@@ -103,7 +107,9 @@
                 </div>
             </div>
             <div id="header_left" class="col-span-1 flex items-center justify-end pl-4">
-                <img src="public/images/logo.png" alt="logo" srcset="">
+                <a href="./">
+                    <img src="public/images/logo.png" alt="logo" srcset="">
+                </a>
             </div>
         </div>
     </header>
@@ -118,7 +124,7 @@
             <div id="menu_top" class="items-center justify-between hidden w-full md:flex   ">
                 <ul class="flex flex-col gap-4 md:flex-row relative w-full  px-3 z-10  ">
                     <li data-time="1" class="cursor-pointer ">
-                        <a 
+                        <a
                             class="     flex cursor-pointer  items-center justify-between w-full py-2 px-3 text-white font-bold border-b border-gray-100 md:w-auto hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 ">
                             کالای دیجیتال
 
@@ -132,10 +138,10 @@
 
                         <ul class="absolute bg-gray-100 flex gap-4 left-0 w-full py-3 px-3 mt-3 z-20">
                             <li data-time="12">
-                                <a href="#" >
+                                <a href="#">
                                     موبایل
                                 </a>
-                                
+
                                 <div
                                     class="w-full submenu3 bg-gray-100 grid grid-cols-4  mt-2  absolute border-t  left-0 border-l border-r border-b border-gray-400 shadow-2xl">
                                     <div class="p-2  border-l border-gray-300">
@@ -210,10 +216,10 @@
                             </li>
                         </ul>
                     </li>
-                    
+
 
                     <li data-time="2" class="cursor-pointer">
-                        <a 
+                        <a
                             class="flex cursor-pointer items-center justify-between w-full py-2 px-3  text-white font-bold border-b border-gray-100 md:w-auto hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 ">
                             لوازم خانگی برقی
 
@@ -283,23 +289,23 @@
         <script>
             //دستورات منو اصلی
             var timer = {};
-            $('#menu_top li').hover(function () {
+            $('#menu_top li').hover(function() {
                 var tag = $(this)
 
                 var timerAttr = tag.attr('data-time');
                 clearTimeout(timer[timerAttr]);
 
-                timer[timerAttr] = setTimeout(function () {
+                timer[timerAttr] = setTimeout(function() {
                     $('>ul', tag).addClass('active_main_menu');
                     $(">.submenu3", tag).addClass('active2_main_menu');
                 }, 200)
 
-            }, function () {
+            }, function() {
                 var tag = $(this)
                 var timerAttr = tag.attr('data-time');
                 clearTimeout(timer[timerAttr]);
 
-                timer[timerAttr] = setTimeout(function () {
+                timer[timerAttr] = setTimeout(function() {
                     $('>ul', tag).removeClass("active_main_menu");
                     $(">.submenu3", tag).removeClass('active2_main_menu');
                 }, 300)

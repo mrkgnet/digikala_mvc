@@ -15,17 +15,15 @@
         <!--sidebar left-->
         <div id="sidebar_left" class="col-span-3">
             <!-- اصلی slider-->
-         
+
 
             <?php
-            
+
             include("slider1.php");
             include("services_features.php");
             include("slider2.php");
             ?>
-         
 
-           
 
             <!--فقط در دیجی کالا-->
             <?php require('only_clicksite.php') ?>
@@ -46,5 +44,7 @@
 
         </div>
     </div>
+
+</div>
 
 </div>

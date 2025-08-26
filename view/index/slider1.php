@@ -74,16 +74,19 @@
     <div class="swiper-wrapper">
 
         <?php
-        $data_slider1= $data[0];
-        
-       
+        $data_slider1 = $data[0];
+
+
         foreach ($data_slider1 as $row) {
         ?>
-            <div class="swiper-slide">
-                <a href="<?=$row['link']?>" target="_blank">
-                    <img src="<?=$row['img']?>" alt="Slide 1">
+            <div class="swiper-slide" >
+                <a class="" href="<?= $row['link'] ?>" target="_blank" >
+                    <img class="rounded-none" src="<?= $row['img'] ?>" alt="Slide 1" >
                 </a>
             </div>
+
+
+            
         <?php
         }
         ?>
