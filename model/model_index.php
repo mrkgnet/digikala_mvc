@@ -69,9 +69,6 @@ class Model_index extends Model
             $row['total_price'] = $price - $discount_amount;  // ← اینجاست
         }
 
-
-
-
         return [$result, $date];
     }
 

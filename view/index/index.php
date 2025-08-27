@@ -22,23 +22,28 @@
             include("slider1.php");
             include("services_features.php");
             include("slider2.php");
+            require('only_clicksite.php');
+            require('direct_access.php');
+            require('most_viewed.php');
+            require('most_saled.php');
+            require('last_product.php');
             ?>
 
 
             <!--فقط در دیجی کالا-->
-            <?php require('only_clicksite.php') ?>
+            <?php  ?>
 
             <!--direct access-->
-            <?php require('direct_access.php') ?>
+            <?php  ?>
 
             <!-- پر بازدید ترین ها-->
-            <?php require('most_viewed.php') ?>
+            <?php  ?>
 
             <!--   پر فروش ترین ها-->
-            <?php require('most_saled.php') ?>
+            <?php  ?>
 
             <!--   جدید ترین کالاها-->
-            <?php require('last_product.php') ?>
+            <?php  ?>
 
 
 

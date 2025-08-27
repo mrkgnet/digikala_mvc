@@ -6,7 +6,7 @@ class Model
     public function __construct()
     {
         $host = "localhost";
-        $dbname = "digi_mvc";
+        $dbname = "digikala_mvc";
         $username = "root";
         $password = "";
 

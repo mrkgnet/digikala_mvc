@@ -75,8 +75,6 @@
 
         <?php
         $data_slider1 = $data[0];
-
-
         foreach ($data_slider1 as $row) {
         ?>
             <div class="swiper-slide" >
