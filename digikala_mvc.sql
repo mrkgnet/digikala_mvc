@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 27, 2025 at 10:23 PM
+-- Generation Time: Aug 28, 2025 at 08:44 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -39,7 +39,9 @@ CREATE TABLE `tbl_option` (
 
 INSERT INTO `tbl_option` (`id`, `setting`, `value`) VALUES
 (1, 'special_time', '86400'),
-(2, 'limit_slider', '4');
+(2, 'limit_slider', '4'),
+(3, 'tel', '021-4493993'),
+(4, 'email', 'reza@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -124,7 +126,7 @@ ALTER TABLE `tbl_slider1`
 -- AUTO_INCREMENT for table `tbl_option`
 --
 ALTER TABLE `tbl_option`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tbl_product`

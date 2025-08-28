@@ -36,6 +36,7 @@ class Model
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $option_new = array();
+        
         foreach ($result as $row) {
            $setting = $row['setting'];
            $vlaue = $row['value'];

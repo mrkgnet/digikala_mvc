@@ -122,7 +122,7 @@
                             <img style="max-width: 150px !important;" src="public/images/product/<?= $row['id'] ?>/product_220.jpg"
                                 alt="بخار پز فلر" class=" object-contain rounded-lg " />
                             <a href="<?=URL?>product/index/<?= $row['id'] ?>"  type="button"
-                                class="bg-green-600 my-4 cursor-pointer duration-200 flex focus:outline-none focus:ring-4 gap-2 hover:bg-red-400 hover:text-white hover:px-8 items-center mb-2 me-2 px-5 py-2.5 rounded-lg  text-center text-sm text-white transition-all shadow-md">
+                                class="bg-green-600 my-4 cursor-pointer duration-200 flex focus:outline-none focus:ring-4 gap-2  hover:px-8 items-center mb-2 me-2 px-5 py-2.5 rounded-lg  text-center text-sm hover:text-white text-white transition-all shadow-md">
                                 <i class="bi bi-cart-plus"></i>
                                 مشاهده | خرید
                             </a>

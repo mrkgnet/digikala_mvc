@@ -74,7 +74,15 @@ class Model_index extends Model
 
     public function getOnlyDigiKala()
     {
-        $sql = "SELECT * FROM `tbl_product` WHERE `only_digikala` = 1 ORDER BY `id` DESC limit 5";
+        $sql = "SELECT * FROM `tbl_option` WHERE `setting` = 'limit_slider'";
+        $stmt= self::$conn->prepare($sql);
+        $stmt->execute();
+        $limit = $stmt->fetch(PDO::FETCH_ASSOC);
+        $limitValue = $limit['value'];
+
+
+
+        $sql = "SELECT * FROM `tbl_product` WHERE `only_digikala` = 1 ORDER BY `id` DESC limit $limitValue";
         $stmt = self::$conn->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -83,12 +91,15 @@ class Model_index extends Model
 
     public function getMostViewed()
     {
+        // محاسبه محدودیت اسلایر
         $sql = "SELECT * FROM `tbl_option` WHERE `setting` = 'limit_slider'";
         $stmt = self::$conn->prepare($sql);
         $stmt->execute();
         $limit = $stmt->fetch(PDO::FETCH_ASSOC);
+        $limitValue = $limit['value'];
 
-        $sql = "SELECT * FROM `tbl_product` ORDER BY `view` DESC limit $limit[value]";
+
+        $sql = "SELECT * FROM `tbl_product` ORDER BY `view` DESC limit $limitValue";
         $stmt = self::$conn->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -102,8 +113,11 @@ class Model_index extends Model
         $stmt = self::$conn->prepare($sql);
         $stmt->execute();
         $limit = $stmt->fetch(PDO::FETCH_ASSOC);
+        $limitValue = $limit['value'];
 
-        $sql = "SELECT * FROM `tbl_product` ORDER BY `id` DESC limit $limit[value]";
+
+        
+        $sql = "SELECT * FROM `tbl_product` ORDER BY `id` DESC limit $limitValue";
         $stmt = self::$conn->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
