@@ -97,6 +97,10 @@
     <!-- دات‌های پایین -->
     <div class="swiper-pagination"></div>
 
+
+
+
+
     <!-- اسکریپت اسلایدر اصلی -->
     <script>
         const autoplayDelay = 5000; // زمان هر اسلاید

@@ -16,6 +16,16 @@ class Model_index extends Model
         return $result;
     }
 
+    // model/model_index.php
+    public function getSlides()
+    {
+        $sql = "SELECT link, img FROM tbl_slider1 ORDER BY id DESC LIMIT 10";
+        $stmt = self::$conn->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC); // فقط آرایه بده
+    }
+
+
     public function getSlider2()
     {
         $sql = "SELECT * FROM tbl_product WHERE special=1 ORDER BY id DESC LIMIT 5";
@@ -23,12 +33,10 @@ class Model_index extends Model
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+
         // گرفتن مقدار duration_special از جدول tbl_option
-        $sql = 'SELECT * FROM tbl_option WHERE setting ="special_time" ';
-        $stmt = self::$conn->prepare($sql);
-        $stmt->execute();
-        $result2 = $stmt->fetch(PDO::FETCH_ASSOC);
-        $duration_special = $result2['value'];
+        $data_tbl_option = self::getOption();
+        $duration_special = $data_tbl_option['special_time'];
 
         $first_row = $result[0];
         // گرفتن مقدار time_special
@@ -49,17 +57,6 @@ class Model_index extends Model
         // فرمت تاریخ خروجی
         $date = date('F d, Y H:i:s', $time_end);
 
-
-        // 🔹 محاسبه تخفیف درصدی برای همه محصولات
-        // foreach ($result as $key => $row) {
-        //     $price = $row['price'];
-        //     $discount_percent = $row['discount'];
-
-        //     $discount_amount = ($price * $discount_percent) / 100;
-        //     $result[$key]['total_price'] = $price - $discount_amount;
-        // }
-
-
         // روش دوم با استفاده چت جی بی تی برای محاسبه تخفیف
         foreach ($result as &$row) {
             $price = $row['price'];
@@ -75,7 +72,7 @@ class Model_index extends Model
     public function getOnlyDigiKala()
     {
         $sql = "SELECT * FROM `tbl_option` WHERE `setting` = 'limit_slider'";
-        $stmt= self::$conn->prepare($sql);
+        $stmt = self::$conn->prepare($sql);
         $stmt->execute();
         $limit = $stmt->fetch(PDO::FETCH_ASSOC);
         $limitValue = $limit['value'];
@@ -116,7 +113,7 @@ class Model_index extends Model
         $limitValue = $limit['value'];
 
 
-        
+
         $sql = "SELECT * FROM `tbl_product` ORDER BY `id` DESC limit $limitValue";
         $stmt = self::$conn->prepare($sql);
         $stmt->execute();

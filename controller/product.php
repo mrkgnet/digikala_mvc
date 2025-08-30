@@ -1,19 +1,14 @@
 <?php
 class Product extends Controller
 {
-    /**
-     * Class constructor.
-     */
-    function __construct()
+    public function __construct() {}
+    public function index($id)
     {
+        $productInfo = $this->model->productInfo($id);
+     
+      
+        $data = ['productInfo'=>$productInfo];
+          
+        $this->view('product/index', $data);
     }
-    
-    public function index() {
-       
-        $this->view('product/index');
-    }
-
-
 }
-
-?>

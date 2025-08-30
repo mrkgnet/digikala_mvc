@@ -87,7 +87,7 @@
 
                 <!-- عنوان گارانتی -->
                 <h3
-                    class="bg-gray-100 text-gray-800 text-base font-bold px-3 py-1 rounded w-max flex items-center gap-2 my-2">
+                    class="bg-gray-100 text-gray-800 text-base font-bold px-3 py-1  w-max flex items-center gap-2 my-2">
                     گارانتی:
                     <span id="selectedWarranty" class="text-blue-600 font-semibold">...</span>
                 </h3>
@@ -96,7 +96,7 @@
                 <div id="dropdownWrapper" class="relative w-full max-w-sm">
                     <!-- باکس انتخاب -->
                     <div id="dropdownToggle"
-                        class="w-full px-4 py-2 bg-white border border-gray-300 rounded-lg shadow-sm text-sm text-gray-800 cursor-pointer flex justify-between items-center">
+                        class="w-full px-4 py-2 bg-white border border-gray-300  shadow-sm text-sm text-gray-800 cursor-pointer flex justify-between items-center">
                         <span id="selectedWarranty">نوع گارانتی را انتخاب کنید</span>
                         <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" stroke-width="2"
                             viewBox="0 0 24 24">
@@ -106,7 +106,7 @@
 
                     <!-- لیست گزینه‌ها -->
                     <ul id="warrantyList"
-                        class="absolute z-10 w-full mt-1 hidden bg-white border border-gray-300 rounded-lg shadow-lg max-h-40 overflow-y-auto">
+                        class="absolute z-10 w-full mt-1 hidden bg-white border border-gray-300  shadow-lg max-h-40 overflow-y-auto">
                         <li data-value="شرکتی_۱۸"
                             class="px-4 py-2 cursor-pointer hover:bg-blue-100 text-gray-800 text-sm">
                             گارانتی ۱۸ ماهه شرکتی</li>
@@ -183,7 +183,7 @@
                     <!-- دکمه‌ها -->
                     <div class="grid grid-cols-2 gap-3 pt-3">
                         <button
-                            class="flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white font-medium py-2 rounded-lg transition">
+                            class=" cursor-pointer flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white font-medium py-2  transition">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -193,7 +193,7 @@
                         </button>
 
                         <button
-                            class="flex items-center justify-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium py-2 rounded-lg transition">
+                            class="flex cursor-pointer items-center justify-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium py-2  transition">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path d="M4 4h16v2H4V4zm0 14h16v2H4v-2zm0-7h16v2H4v-2z" />

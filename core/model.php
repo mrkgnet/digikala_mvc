@@ -30,19 +30,28 @@ class Model
     // این تابع برای گرفتن اطلاعات از جدول اپشن مورد استفاده قرار میگیره
     public static function getOption()
     {
-        
+
         $sql = 'SELECT * FROM tbl_option';
         $stmt = self::$conn->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        $option_new = array();
-        
+
+        $option_new = [];
         foreach ($result as $row) {
-           $setting = $row['setting'];
-           $vlaue = $row['value'];
-           $option_new[$setting] = $vlaue; // tel=>0912345678,address=>تهران, ....
+            $setting = $row['setting'];
+            $vlaue = $row['value'];
+            $option_new[$setting] = $vlaue; // tel=>0912345678,address=>تهران, ....
         } // ['tel'=>'0912345678','address'=>'تهران', ....]
 
+       
         return $option_new;
+    }
+
+    // تابع محاسبه تخفیف
+    public static function calculateDiscount($price, $discountPrecent)
+    {
+        $price_discount = ($price * $discountPrecent) / 100; // میزان تخفیف برحسب تومان
+        $price_total = $price - $price_discount;
+        return [$price_discount, $price_total];
     }
 }

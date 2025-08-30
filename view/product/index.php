@@ -3,8 +3,16 @@
 
     <!-- محصول -->
     <div class="product_page bg-white ">
+
         <!-- پیشنهاد شگفت انگیز -->
-        <?php require("offer.php") ?>
+        <?php
+     
+        $productInfo = $data['productInfo'];
+        if ($productInfo['special'] == 1) {
+            require("offer.php");
+        }
+
+        ?>
 
         <!-- product details -->
         <?php require('deatails.php') ?>
@@ -20,5 +28,5 @@
 
 
     <!-- تب ها  -->
-   <?php require("tabs.php") ?>
+    <?php require("tabs.php") ?>
 </div>
