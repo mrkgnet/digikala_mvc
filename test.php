@@ -1,5 +1,5 @@
 <?php
-class Model
+class Test
 {
     public static $conn;
 
@@ -27,35 +27,21 @@ class Model
         }
     }
 
-    // این تابع برای گرفتن اطلاعات از جدول اپشن مورد استفاده قرار میگیره
-    public static function getOption()
+    public function getProduct()
     {
-
-        $sql = 'SELECT * FROM tbl_option';
-        $stmt = self::$conn->prepare($sql);
-        $stmt->execute();
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-        $option_new = [];
-        foreach ($result as $row) {
-            $setting = $row['setting'];
-            $vlaue = $row['value'];
-            $option_new[$setting] = $vlaue; // tel=>0912345678,address=>تهران, ....
-        } // ['tel'=>'0912345678','address'=>'تهران', ....]
-
-       
-        return $option_new;
+        $id = 1;
+        $price = 20000;
+        $values = [$id ,$price];
+        $sql = "SELECT * FROM tbl_product WHERE id = ? AND price = ?";
+        $result = $this->doSelect($sql, $values);
+        
+        // خروجی رو قشنگ‌تر JSON نشون بده
+        echo "<pre>";
+        print_r($result);
+        echo "</pre>";
     }
 
-    // تابع محاسبه تخفیف
-    public static function calculateDiscount($price, $discountPrecent)
-    {
-        $price_discount = ($price * $discountPrecent) / 100; // میزان تخفیف برحسب تومان
-        $price_total = $price - $price_discount;
-        return ['price_discount'=>$price_discount,'price_total'=> $price_total];
-    }
-
-     public function doSelect($sql, $values = [], $fetch = '', $fetchStyle = PDO::FETCH_ASSOC)
+    public function doSelect($sql, $values = [], $fetch = '', $fetchStyle = PDO::FETCH_ASSOC)
     {
         $stmt = self::$conn->prepare($sql);
         foreach ($values as $key => $value) {
@@ -69,3 +55,7 @@ class Model
         return $result;
     }
 }
+
+$test = new Test();
+$test->getProduct();
+?>

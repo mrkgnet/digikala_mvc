@@ -10,7 +10,9 @@
         <!-- title -->
         <div class="flex bg-gray-300 items-center justify-between mb-4 pb-2 px-2 py-3 my-2 mx-2 ">
             <!-- عنوان محصول -->
-            <h2 class="text-xl py-2 font-semibold text-gray-800">عنوان محصول</h2>
+            <h2 class="text-xl py-2 font-semibold text-gray-800">
+                <?= $productInfo['title'] ?>
+            </h2>
 
             <!-- سیستم امتیازدهی -->
             <div class="flex items-center space-x-1 rtl:space-x-reverse text-yellow-400">
@@ -50,22 +52,37 @@
                 </div>
 
                 <!-- دایره‌های رنگ -->
-                <div id="colorPicker" class="flex  gap-1">
-                    <div data-color="سیاه" class="w-6 h-6 rounded-full  cursor-pointer transition"
-                        style="background-color: #000;"></div>
-                    <div data-color="آبی" class="w-6 h-6 rounded-full bg-blue-500 cursor-pointer transition">
-                    </div>
-                    <div data-color="سبز" class="w-6 h-6 rounded-full bg-green-500 cursor-pointer transition">
-                    </div>
-                    <div data-color="زرد" class="w-6 h-6 rounded-full bg-yellow-400 cursor-pointer transition">
-                    </div>
+                <div id="colorPicker" class="flex gap-1">
+                    <?php
+                    $all_colors = $productInfo['all_colors'];
+
+                  
+
+
+                    foreach ($all_colors as $colorGroup) {
+                        foreach ($colorGroup as $color) { // اینجا لایه دوم هم پیمایش میشه
+                    ?>
+                            <div data-color="<?= $color['title'] ?>"
+                                class="w-6 h-6 rounded-full cursor-pointer transition"
+                                style="background-color: <?= $color['hex'] ?>;">
+                            </div>
+                    <?php
+                        }
+                    }
+                    ?>
                 </div>
 
 
+
+
+                <!-- <div data-color="سیاه" class="w-6 h-6 rounded-full  cursor-pointer transition"
+                    style="background-color: #000;">
+                </div> -->
+
                 <!-- اسکریپت انتخاب رنگ -->
                 <script>
-                    $(document).ready(function () {
-                        $('#colorPicker div').on('click', function () {
+                    $(document).ready(function() {
+                        $('#colorPicker div').on('click', function() {
                             // حذف حالت انتخاب از بقیه
                             $('#colorPicker div').removeClass('ring-2 ring-black');
 
@@ -127,14 +144,14 @@
                 <!-- jQuery -->
 
                 <script>
-                    $(function () {
+                    $(function() {
                         // باز و بسته کردن منو
-                        $('#dropdownToggle').on('click', function () {
+                        $('#dropdownToggle').on('click', function() {
                             $('#warrantyList').toggleClass('hidden');
                         });
 
                         // انتخاب آیتم
-                        $('#warrantyList li').on('click', function () {
+                        $('#warrantyList li').on('click', function() {
                             const label = $(this).text().trim();
                             const value = $(this).data('value');
 
@@ -144,7 +161,7 @@
                         });
 
                         // بستن منو با کلیک بیرون
-                        $(document).on('click', function (e) {
+                        $(document).on('click', function(e) {
                             if (!$(e.target).closest('#dropdownWrapper').length) {
                                 $('#warrantyList').addClass('hidden');
                             }

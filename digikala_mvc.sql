@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 28, 2025 at 08:44 AM
+-- Generation Time: Sep 05, 2025 at 04:28 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -24,6 +24,27 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_color`
+--
+
+CREATE TABLE `tbl_color` (
+  `id` int(255) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `hex` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='جدول رنگ ها';
+
+--
+-- Dumping data for table `tbl_color`
+--
+
+INSERT INTO `tbl_color` (`id`, `title`, `hex`) VALUES
+(1, 'مشکی', '#000'),
+(2, 'قرمز', '#f00'),
+(3, 'بنفش', '#f0f');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_option`
 --
 
@@ -38,7 +59,7 @@ CREATE TABLE `tbl_option` (
 --
 
 INSERT INTO `tbl_option` (`id`, `setting`, `value`) VALUES
-(1, 'special_time', '86400'),
+(1, 'special_time', '964000'),
 (2, 'limit_slider', '4'),
 (3, 'tel', '021-4493993'),
 (4, 'email', 'reza@gmail.com');
@@ -60,20 +81,21 @@ CREATE TABLE `tbl_product` (
   `special` int(1) NOT NULL,
   `time_special` int(255) NOT NULL,
   `only_digikala` int(1) NOT NULL,
-  `view` bigint(20) NOT NULL
+  `view` bigint(20) NOT NULL,
+  `colors` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_product`
 --
 
-INSERT INTO `tbl_product` (`id`, `title`, `price`, `cat`, `introduction`, `tedad_mojood`, `discount`, `special`, `time_special`, `only_digikala`, `view`) VALUES
-(1, 'خمیردندان', 20000, 0, '', 5, 0, 1, 1756304650, 1, 400),
-(2, 'لباس شویی', 0, 0, '', 0, 0, 1, 1756304650, 1, 0),
-(3, 'موبایل سامسونگ', 50000, 0, '', 0, 0, 1, 1756304650, 1, 700),
-(4, 'اپل ', 4000, 0, '', 0, 0, 1, 1756304650, 1, 50),
-(5, 'تبلت ', 32000, 0, '', 0, 0, 1, 1756304650, 1, 20),
-(6, 'مانیتور', 89000, 0, '', 0, 0, 1, 1756304650, 1, 0);
+INSERT INTO `tbl_product` (`id`, `title`, `price`, `cat`, `introduction`, `tedad_mojood`, `discount`, `special`, `time_special`, `only_digikala`, `view`, `colors`) VALUES
+(1, 'خمیردندان', 20000, 0, '', 5, 80, 1, 1756304650, 1, 400, '1,2,3'),
+(2, 'لباس شویی', 0, 0, '', 0, 0, 0, 1756304650, 1, 0, ''),
+(3, 'موبایل سامسونگ', 50000, 0, '', 0, 0, 1, 1756304650, 1, 700, ''),
+(4, 'اپل ', 4000, 0, '', 0, 0, 1, 1756304650, 1, 50, ''),
+(5, 'تبلت ', 32000, 0, '', 0, 0, 1, 1756304650, 1, 20, ''),
+(6, 'مانیتور', 89000, 0, '', 0, 0, 1, 1756304650, 1, 0, '');
 
 -- --------------------------------------------------------
 
@@ -101,6 +123,12 @@ INSERT INTO `tbl_slider1` (`id`, `img`, `link`) VALUES
 --
 
 --
+-- Indexes for table `tbl_color`
+--
+ALTER TABLE `tbl_color`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tbl_option`
 --
 ALTER TABLE `tbl_option`
@@ -121,6 +149,12 @@ ALTER TABLE `tbl_slider1`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `tbl_color`
+--
+ALTER TABLE `tbl_color`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tbl_option`

@@ -8,14 +8,13 @@ class Model_Product extends Model
 
     public function productInfo($id)
     {
-        $sql = "SELECT * FROM tbl_product WHERE id =:x";
-        $stmt = self::$conn->prepare($sql);
-        $stmt->execute(['x' => $id]);
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $sql = "SELECT * FROM tbl_product WHERE id =?";
+
+        $result = $this->doSelect($sql, [$id], '1');
 
 
 
-
+        //محاسبه تایمر 
         $data_tbl_option = self::getOption();
         $duration_special = $data_tbl_option['special_time'];
 
@@ -46,10 +45,27 @@ class Model_Product extends Model
         // تخفیف
         $price_claculate = [];
         $price_claculate = self::calculateDiscount($result['price'], $result['discount']);
-        $result['price_discount'] = $price_claculate[0];
-        $result['price_total'] = $price_claculate[1];
+        $result['price_discount'] = $price_claculate['price_discount'];
+        $result['price_total'] = $price_claculate['price_total'];
 
 
+        $all_colors = [];
+        $colors = $result['colors'];
+        $colors = explode(',', $colors);
+        $colors = array_filter($colors);
+        foreach ($colors as $item) {
+            $colorInfo = $this->colorInfo($item);
+            array_push($all_colors, $colorInfo);
+        }
+        $result['all_colors'] = $all_colors;
+       
+        return $result;
+    }
+
+    public function colorInfo($id)
+    {
+        $sql = "SELECT * FROM tbl_color WHERE id =?";
+        $result = $this->doSelect($sql, [$id]);
         return $result;
     }
 }

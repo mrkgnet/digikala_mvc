@@ -10,28 +10,24 @@ class Model_index extends Model
     {
 
         $sql = "SELECT * FROM tbl_slider1";
-        $stmt = self::$conn->prepare($sql);
-        $stmt->execute();
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $result = $this->doSelect($sql);
         return $result;
     }
 
     // model/model_index.php
-    public function getSlides()
-    {
-        $sql = "SELECT link, img FROM tbl_slider1 ORDER BY id DESC LIMIT 10";
-        $stmt = self::$conn->prepare($sql);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC); // فقط آرایه بده
-    }
+    // public function getSlides()
+    // {
+    //     $sql = "SELECT link, img FROM tbl_slider1 ORDER BY id DESC LIMIT 10";
+    //     $stmt = self::$conn->prepare($sql);
+    //     $stmt->execute();
+    //     return $stmt->fetchAll(PDO::FETCH_ASSOC); // فقط آرایه بده
+    // }
 
 
     public function getSlider2()
     {
-        $sql = "SELECT * FROM tbl_product WHERE special=1 ORDER BY id DESC LIMIT 5";
-        $stmt = self::$conn->prepare($sql);
-        $stmt->execute();
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $sql = "SELECT * FROM tbl_product WHERE special=? ";
+        $result = $this->doSelect($sql, [1]);
 
 
         // گرفتن مقدار duration_special از جدول tbl_option
@@ -62,8 +58,8 @@ class Model_index extends Model
             $price = $row['price'];
             $discount_percent = $row['discount'];
 
-            $discount_amount = ($price * $discount_percent) / 100;
-            $row['total_price'] = $price - $discount_amount;  // ← اینجاست
+            $cal_fetch = self::calculateDiscount($price, $discount_percent);
+            $row['total_price'] = $cal_fetch['price_total'];
         }
 
         return [$result, $date];
@@ -72,52 +68,36 @@ class Model_index extends Model
     public function getOnlyDigiKala()
     {
         $sql = "SELECT * FROM `tbl_option` WHERE `setting` = 'limit_slider'";
-        $stmt = self::$conn->prepare($sql);
-        $stmt->execute();
-        $limit = $stmt->fetch(PDO::FETCH_ASSOC);
+        $limit = $this->doSelect($sql, [], '1');
         $limitValue = $limit['value'];
 
-
-
         $sql = "SELECT * FROM `tbl_product` WHERE `only_digikala` = 1 ORDER BY `id` DESC limit $limitValue";
-        $stmt = self::$conn->prepare($sql);
-        $stmt->execute();
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $result = $this->doSelect($sql);
         return $result;
     }
 
     public function getMostViewed()
     {
         // محاسبه محدودیت اسلایر
-        $sql = "SELECT * FROM `tbl_option` WHERE `setting` = 'limit_slider'";
-        $stmt = self::$conn->prepare($sql);
-        $stmt->execute();
-        $limit = $stmt->fetch(PDO::FETCH_ASSOC);
+        $sql = "SELECT * FROM `tbl_option` WHERE `setting` = 'limit_slider'";       
+        $limit = $this->doSelect($sql, [], '1');
         $limitValue = $limit['value'];
 
 
-        $sql = "SELECT * FROM `tbl_product` ORDER BY `view` DESC limit $limitValue";
-        $stmt = self::$conn->prepare($sql);
-        $stmt->execute();
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $sql = "SELECT * FROM `tbl_product` ORDER BY `view` DESC limit $limitValue";       
+        $result = $this->doSelect($sql);
         return $result;
     }
 
 
     public function getLastProduct()
     {
-        $sql = "SELECT * FROM `tbl_option` WHERE `setting` = 'limit_slider'";
-        $stmt = self::$conn->prepare($sql);
-        $stmt->execute();
-        $limit = $stmt->fetch(PDO::FETCH_ASSOC);
+        $sql = "SELECT * FROM `tbl_option` WHERE `setting` = 'limit_slider'";       
+        $limit = $this->doSelect($sql, [], '1');
         $limitValue = $limit['value'];
 
-
-
-        $sql = "SELECT * FROM `tbl_product` ORDER BY `id` DESC limit $limitValue";
-        $stmt = self::$conn->prepare($sql);
-        $stmt->execute();
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $sql = "SELECT * FROM `tbl_product` ORDER BY `id` DESC limit $limitValue";        
+        $result = $this->doSelect($sql);
         return $result;
     }
 }

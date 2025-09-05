@@ -18,7 +18,7 @@
 
              <div
                  class="max-w-xs mx-auto bg-white rounded-2xl hover:shadow-2xl transition-all duration-300 p-4 text-center">
-                 <a href="<?=URL?>product/index/<?= $row['id'] ?>" class="block space-y-2">
+                 <a href="<?=URL?>product/index/<?= $row['id'] ?>" target="_blank" class="block space-y-2">
                      <img src="public/images/product/<?=$row['id'] ?>/product_220.jpg"
                          class="mx-auto w-28 rounded-xl transform hover:scale-105 transition-transform duration-300"
                          alt="">

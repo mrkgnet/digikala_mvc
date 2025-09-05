@@ -20,13 +20,12 @@
 
 
     <!-- معرفی اجمالی  -->
-    <?php require('introduction.php') ?>
+    <?php 
+    
+    require('introduction.php');
+    require('onlyclicksite.php');
+    require("tabs.php")
+    ?>
 
 
-    <!--   جدید ترین کالاها-->
-    <?php require('onlyclicksite.php') ?>
-
-
-    <!-- تب ها  -->
-    <?php require("tabs.php") ?>
 </div>
