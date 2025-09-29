@@ -30,8 +30,8 @@
                 <div id="productMain" class="max-w-md mx-auto p-4 bg-white shadow-lg rounded-2xl">
                     <!-- تصویر اصلی -->
                     <div class="relative overflow-hidden rounded-xl border border-gray-200 mb-4 py-4">
-                        <img id="mainImage" src="public/images/small/1472662586.jpg"
-                            data-zoom-image="public/images/large/1472662586.jpg" alt="تصویر اصلی"
+                        <img id="mainImage" src="public/images/product/<?=$productInfo['id'] ?>/product_350.jpg"
+                            data-zoom-image="public/images/product/<?=$productInfo['id'] ?>/product_zoom.jpg" alt="تصویر اصلی"
                             class=" h-auto object-cover m-auto w-64 transition-opacity duration-300 opacity-100" />
 
                         <!-- اسکریپت الونت زووم -->

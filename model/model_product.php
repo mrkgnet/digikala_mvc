@@ -12,8 +12,6 @@ class Model_Product extends Model
 
         $result = $this->doSelect($sql, [$id], '1');
 
-
-
         //محاسبه تایمر 
         $data_tbl_option = self::getOption();
         $duration_special = $data_tbl_option['special_time'];
@@ -40,8 +38,6 @@ class Model_Product extends Model
 
         $result['date'] = $date;
 
-
-
         // تخفیف
         $price_claculate = [];
         $price_claculate = self::calculateDiscount($result['price'], $result['discount']);
@@ -49,6 +45,7 @@ class Model_Product extends Model
         $result['price_total'] = $price_claculate['price_total'];
 
 
+        // دریافت رنگ ها
         $all_colors = [];
         $colors = $result['colors'];
         $colors = explode(',', $colors);
@@ -58,14 +55,53 @@ class Model_Product extends Model
             array_push($all_colors, $colorInfo);
         }
         $result['all_colors'] = $all_colors;
-       
+
+        $all_garantee = [];
+        $garantees = $result['garantees'];
+      
+        $garantees = explode(',', $garantees);
+        $garantees = array_filter($garantees);
+            
+
+        foreach ($garantees as $item) {
+           
+            $garanteeInfo = $this->garanteeInfo($item);
+            array_push($all_garantee, $garanteeInfo);
+        }
+        
+        $result['all_garantee'] = $all_garantee;    
+
         return $result;
     }
 
-    public function colorInfo($id)
+    public function colorInfo($id) 
     {
         $sql = "SELECT * FROM tbl_color WHERE id =?";
         $result = $this->doSelect($sql, [$id]);
         return $result;
     }
+
+    public function garanteeInfo($id)
+    {
+        $sql = "SELECT * FROM tbl_garantee WHERE id =?";
+        $result = $this->doSelect($sql, [$id]);
+        return $result;
+    }
+
+
+   public function getOnlyDigiKala()
+    {
+        $sql = "SELECT * FROM `tbl_option` WHERE `setting` = 'limit_slider'";
+        $limit = $this->doSelect($sql, [], '1');
+        $limitValue = $limit['value'];
+
+        $sql = "SELECT * FROM `tbl_product` WHERE `only_digikala` = 1 ORDER BY `id` DESC limit $limitValue";
+        $result = $this->doSelect($sql);
+        return $result;
+    }
+
+
+
+
+
 }

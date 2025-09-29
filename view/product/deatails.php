@@ -55,10 +55,6 @@
                 <div id="colorPicker" class="flex gap-1">
                     <?php
                     $all_colors = $productInfo['all_colors'];
-
-                  
-
-
                     foreach ($all_colors as $colorGroup) {
                         foreach ($colorGroup as $color) { // اینجا لایه دوم هم پیمایش میشه
                     ?>
@@ -124,17 +120,21 @@
                     <!-- لیست گزینه‌ها -->
                     <ul id="warrantyList"
                         class="absolute z-10 w-full mt-1 hidden bg-white border border-gray-300  shadow-lg max-h-40 overflow-y-auto">
-                        <li data-value="شرکتی_۱۸"
-                            class="px-4 py-2 cursor-pointer hover:bg-blue-100 text-gray-800 text-sm">
-                            گارانتی ۱۸ ماهه شرکتی</li>
-                        <li data-value="طلایی_۱۲"
-                            class="px-4 py-2 cursor-pointer hover:bg-blue-100 text-gray-800 text-sm">
-                            گارانتی ۱۲ ماهه طلایی</li>
-                        <li data-value="بدون_گارانتی"
-                            class="px-4 py-2 cursor-pointer hover:bg-blue-100 text-gray-800 text-sm">
-                            بدون گارانتی</li>
-                        <li data-value="اصالت" class="px-4 py-2 cursor-pointer hover:bg-blue-100 text-gray-800 text-sm">
-                            گارانتی اصالت و سلامت فیزیکی</li>
+                        <?php
+                        $all_garantee = $productInfo['all_garantee'];
+                        foreach ($all_garantee as $garanteeGroup) {
+                            foreach ($garanteeGroup as $garantee) {
+                        ?>
+                                <li data-id="<?= $garantee['id'] ?>" 
+                                    class="px-4 py-2 cursor-pointer hover:bg-blue-100 text-gray-800 text-sm">
+                                   <?= $garantee['title'] ?>
+                                </li>
+
+                        <?php
+                         }
+                        } ?>
+
+
                     </ul>
 
                     <!-- input hidden برای فرم -->
@@ -182,19 +182,38 @@
                     <!-- قیمت اصلی -->
                     <div class="flex justify-between items-center text-sm text-gray-500">
                         <span>قیمت:</span>
-                        <span class="line-through">۴۵۰,۰۰۰ تومان</span>
+                        <span class="line-through">
+                            <?= number_format($productInfo['price'])  ?>
+
+                            تومان 
+                        </span>
                     </div>
 
                     <!-- تخفیف -->
                     <div class="flex justify-between items-center text-sm text-red-500 font-semibold">
                         <span>تخفیف:</span>
-                        <span>۱۵٪</span>
+                        <span>
+                            <?= number_format($productInfo['price_discount'] ) ?>
+                            تومان
+                        </span>
                     </div>
 
                     <!-- قیمت نهایی -->
                     <div class="flex justify-between items-center text-lg font-bold text-green-600 border-t pt-3">
                         <span>قیمت برای شما:</span>
-                        <span>۳۸۵,۰۰۰ تومان</span>
+                        <span>
+                            <?= number_format($productInfo['price_total'])  ?>
+                            تومان
+                        </span>
+                    </div>
+
+                    <!-- دکمه‌ها -->
+                    <div class="grid grid-cols-2 gap-3 pt-3">
+                        <button
+                            class=" cursor-pointer flex justify-between items-center text-sm text-gray-500">
+                            <span>تعداد:</span>
+                            <span>
+                        </span>
                     </div>
 
                     <!-- دکمه‌ها -->

@@ -6,8 +6,10 @@
 
         <!-- پیشنهاد شگفت انگیز -->
         <?php
-     
+
         $productInfo = $data['productInfo'];
+      
+
         if ($productInfo['special'] == 1) {
             require("offer.php");
         }
@@ -20,8 +22,8 @@
 
 
     <!-- معرفی اجمالی  -->
-    <?php 
-    
+    <?php
+
     require('introduction.php');
     require('onlyclicksite.php');
     require("tabs.php")

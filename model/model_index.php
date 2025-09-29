@@ -14,14 +14,7 @@ class Model_index extends Model
         return $result;
     }
 
-    // model/model_index.php
-    // public function getSlides()
-    // {
-    //     $sql = "SELECT link, img FROM tbl_slider1 ORDER BY id DESC LIMIT 10";
-    //     $stmt = self::$conn->prepare($sql);
-    //     $stmt->execute();
-    //     return $stmt->fetchAll(PDO::FETCH_ASSOC); // فقط آرایه بده
-    // }
+  
 
 
     public function getSlider2()
